@@ -1,3 +1,36 @@
-window.addEventListener('load', function() {
-    addStartGameButton()
-}, false);
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #41a049; /*background green*/
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/* common border radius*/
+.cbr {
+
+}
+
+.calculator-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 1rem;
+
+    width: 327px;
+    height: 404px;
+    background-color: #454545; /*calculator body*/
+    border: 5px solid #353535; /*calculator border*/
+}
+
+.calculator-display {
+    background-color: #FEFEFE; /*button & display white;*/
+    width: 100%;
+    height: 70px;
+}
