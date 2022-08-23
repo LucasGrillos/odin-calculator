@@ -1,6 +1,8 @@
-window.addEventListener('load', function() {
+const leftHandButtons = document.querySelectorAll(".left-hand");
+
+const populateButtonFunctions = () => {
     
-}, false);
+}
 
 const addition = (num1, num2) => {
     return num1+num2;
@@ -35,3 +37,7 @@ const operate = (num1, num2, operation) => {
         division = (num1, num2);
     }
 }
+
+window.addEventListener('load', function() {
+    populateButtonFunctions();
+}, false);

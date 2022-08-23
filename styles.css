@@ -1,6 +1,8 @@
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
+    
 }
 
 body {
@@ -11,8 +13,9 @@ body {
 
 
 /* common border radius*/
-.cbr {
-
+@font-face {
+    font-family: digital7;
+    src: url('./digital-7/digital-7.ttf')
 }
 
 .calculator-body {
@@ -27,10 +30,104 @@ body {
     height: 404px;
     background-color: #454545; /*calculator body*/
     border: 5px solid #353535; /*calculator border*/
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .calculator-display {
     background-color: #FEFEFE; /*button & display white;*/
-    width: 100%;
-    height: 70px;
+    box-shadow: inset 0 -10px 0 #D5D5D5;
+    height: 20%;
+    border-radius: 10px;
+    padding-right: 1rem;
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.display-text {
+    font-family: digital7;
+    font-size: 50px;
+}
+
+.calculator-buttons {
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: center;
+}
+
+.button {
+    border-radius: 5px;
+    background-color: #FEFEFE;
+    width: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    user-select: none;
+
+    box-shadow: 4px 4px rgb(0, 0, 0);
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #DEDEDE;
+}
+
+.button:active {
+    transform: scale(1.01) translate(1px, 1px);
+}
+
+.left-hand {
+    width: 75%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.left-button {
+    height: 50px;
+}
+
+.right-hand {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.right-button {
+    height: 35px;
+}
+
+.equals-button {
+    background-color: #F59B34;
+}
+
+.equals-button:hover {
+    background-color: #E79231;
+}
+
+.clear-button {
+    background-color: #FF4136;
+}
+
+.clear-button:hover {
+    background-color: #FF2417;
 }
