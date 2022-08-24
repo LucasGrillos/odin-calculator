@@ -1,7 +1,32 @@
-const leftHandButtons = document.querySelectorAll(".left-hand");
+const displayText = document.querySelector(".display-text")
+const inputButtons = document.querySelectorAll(".input");
+
+const addZero = () => {
+    displayText.textContent += (/^0$/.test(displayText.textContent) ? '' : '0');
+}
+
+const addPoint = () => {
+    displayText.textContent += (/\./.test(displayText.textContent) ? '' : '.')
+}
+
+const addInput = (event) => {
+    if (event.target.id == '0') {
+        addZero();
+    }
+
+    else if (event.target.id == '.') {
+        addPoint();
+    }
+
+    else {
+        displayText.textContent = displayText.textContent === "0" ? event.target.id : displayText.textContent + event.target.id 
+    }
+}
 
 const populateButtonFunctions = () => {
-    
+    inputButtons.forEach(button => {
+        button.addEventListener("click", addInput); 
+    });
 }
 
 const addition = (num1, num2) => {
