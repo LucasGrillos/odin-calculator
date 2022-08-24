@@ -1,5 +1,8 @@
-const displayText = document.querySelector(".display-text")
+const displayText = document.querySelector(".display-text");
+const displayOperation = document.querySelector(".display-operation");
 const inputButtons = document.querySelectorAll(".input");
+const operationButtons = document.querySelectorAll(".operation");
+const lastValue = "0";
 
 const addZero = () => {
     displayText.textContent += (/^0$/.test(displayText.textContent) ? '' : '0');
@@ -23,9 +26,16 @@ const addInput = (event) => {
     }
 }
 
+const addOperation = (event) => {
+    displayOperation.textContent = event.target.id;
+}
+
 const populateButtonFunctions = () => {
     inputButtons.forEach(button => {
         button.addEventListener("click", addInput); 
+    });
+    operationButtons.forEach(button => {
+        button.addEventListener("click", addOperation);
     });
 }
 
