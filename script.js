@@ -5,6 +5,7 @@ const operationButtons = document.querySelectorAll(".operation");
 const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector(".equals")
 let lastValue = "";
+let operation = "";
 
 const addZero = () => {
     displayText.textContent += (/^0$/.test(displayText.textContent) ? '' : '0');
@@ -15,6 +16,13 @@ const addPoint = () => {
 }
 
 const addInput = (event) => {
+
+    if (lastValue && displayOperation.textContent) {
+        operation = displayOperation.textContent;
+        displayText.textContent = '';
+        displayOperation.textContent = '';
+    }
+
     if (event.target.id == '0') {
         addZero();
     }
@@ -30,12 +38,21 @@ const addInput = (event) => {
 
 const addOperation = (event) => {
     displayOperation.textContent = event.target.id;
+    lastValue = displayText.textContent;
 }
 
 const clearAll = () => {
     displayOperation.textContent = '';
     displayText.textContent = '';
     lastValue = '';
+}
+
+const equalsOperation = () => {
+    if (lastValue && operation && displayText.textContent) {
+        console.log("Hello!");
+        displayText.textContent = operate(parseInt(lastValue), parseInt(displayText.textContent), operation);
+        console.log(displayText.textContent);
+    }
 }
 
 const populateButtonFunctions = () => {
@@ -67,19 +84,19 @@ const division = (num1, num2) => {
 
 const operate = (num1, num2, operation) => {
     if (operation === '+') {
-        addition(num1, num2);
+        return addition(num1, num2);
     }
 
     else if (operation === '-') {
-        subtraction(num1, num2);
+        return subtraction(num1, num2);
     }
 
-    else if (operation === '*') {
-        multiplication(num1, num2);
+    else if (operation === '×') {
+        return multiplication(num1, num2);
     }
 
-    else if (operation == '/') {
-        division = (num1, num2);
+    else if (operation == '÷') {
+        return division(num1, num2);
     }
 }
 
