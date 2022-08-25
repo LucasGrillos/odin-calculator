@@ -37,8 +37,13 @@ const addInput = (event) => {
 }
 
 const addOperation = (event) => {
-    displayOperation.textContent = event.target.id;
+    if (lastValue && displayText.textContent) {
+        console.log("Here we go!");
+        equalsOperation()
+    }
+
     lastValue = displayText.textContent;
+    displayOperation.textContent = event.target.id;
 }
 
 const clearAll = () => {
@@ -49,8 +54,7 @@ const clearAll = () => {
 
 const equalsOperation = () => {
     if (lastValue && operation && displayText.textContent) {
-        console.log("Hello!");
-        displayText.textContent = operate(parseInt(lastValue), parseInt(displayText.textContent), operation);
+        displayText.textContent = operate(parseFloat(lastValue), parseFloat(displayText.textContent), operation);
         console.log(displayText.textContent);
     }
 }
