@@ -17,6 +17,11 @@ const addPoint = () => {
 
 const addInput = (event) => {
 
+    if (displayOperation.getAttribute("data-value") == "true") {
+        displayOperation.setAttribute("data-value", "false");
+        clearAll();
+    }
+    
     if (lastValue && displayOperation.textContent) {
         operation = displayOperation.textContent;
         displayText.textContent = '';
@@ -24,7 +29,7 @@ const addInput = (event) => {
     }
 
     if (event.target.id == '0') {
-        addZero();
+        addZero();  
     }
 
     else if (event.target.id == '.') {
@@ -38,10 +43,9 @@ const addInput = (event) => {
 
 const addOperation = (event) => {
     if (lastValue && displayText.textContent) {
-        console.log("Here we go!");
         equalsOperation()
     }
-
+    
     lastValue = displayText.textContent;
     displayOperation.textContent = event.target.id;
 }
@@ -87,6 +91,8 @@ const division = (num1, num2) => {
 }
 
 const operate = (num1, num2, operation) => {
+    displayOperation.setAttribute("data-value", "true");
+
     if (operation === '+') {
         return addition(num1, num2);
     }
