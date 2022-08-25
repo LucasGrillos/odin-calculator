@@ -2,7 +2,9 @@ const displayText = document.querySelector(".display-text");
 const displayOperation = document.querySelector(".display-operation");
 const inputButtons = document.querySelectorAll(".input");
 const operationButtons = document.querySelectorAll(".operation");
-const lastValue = "0";
+const clearButton = document.querySelector(".clear");
+const equalsButton = document.querySelector(".equals")
+let lastValue = "";
 
 const addZero = () => {
     displayText.textContent += (/^0$/.test(displayText.textContent) ? '' : '0');
@@ -30,6 +32,12 @@ const addOperation = (event) => {
     displayOperation.textContent = event.target.id;
 }
 
+const clearAll = () => {
+    displayOperation.textContent = '';
+    displayText.textContent = '';
+    lastValue = '';
+}
+
 const populateButtonFunctions = () => {
     inputButtons.forEach(button => {
         button.addEventListener("click", addInput); 
@@ -37,6 +45,8 @@ const populateButtonFunctions = () => {
     operationButtons.forEach(button => {
         button.addEventListener("click", addOperation);
     });
+    clearButton.addEventListener("click", clearAll);
+    equalsButton.addEventListener("click", equalsOperation);
 }
 
 const addition = (num1, num2) => {
